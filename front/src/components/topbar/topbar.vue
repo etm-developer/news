@@ -2,7 +2,7 @@
   <div class="outter">
     <header class="header">
       <nav class="nav-wrapper">
-        <router-link to="/top" class="fl logo"></router-link>
+        <a href="http://www.entanmo.com" class="fl logo"></a>
         <router-link to="/top" class="fl btn_hot" active-class="active"><span>HOT</span></router-link>
         <router-link to="/new" class="fl btn_new" active-class="active"><span>NEW</span></router-link>
         <div class="right-part">

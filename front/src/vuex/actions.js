@@ -1,10 +1,9 @@
 
 import Identicon from 'identicon.js'
-import aschJS from 'asch-js'
+import etmJS from 'etm-js'
 // 存储异步操作,获取数据用commit操作mutation
-// let baseUrl = 'http://127.0.0.1:4096/api/dapps/1a351d2092cf3bd9e4289372fccf39e3e7af02d4eef62f266c58b07e02226f1b' // 真实环境
-let baseUrl = 'http://118.24.135.98:4196/api/dapps/b85ecb29e22ffdf46ec149ce36526555bfd3b8afdca9f7307b038656a3f467b2' // 真实环境
-// let baseUrl = 'http://testnet.cctime.org:4096/api/dapps/d352263c517195a8b612260971c7af869edca305bb64b471686323817e57b2c1' // 真实本地环境
+// let baseUrl = 'http://127.0.0.1:4096/api/dapps/1a351d2092cf3bd9e4289372fccf39e3e7af02d4eef62f266c58b07e02226f1b' // 测试环境
+let baseUrl = 'http://140.143.122.232:4096/api/dapps/f592d77aa08c15e6dfae7062cc71e82ac37185d1d15e9192031ca60fc7c6bc52' // 真实环境
 // let loginurl = baseUrl + '/login'测试环境下login传输， 有暴露secret可能
 let loginurl = baseUrl + '/accounts/'
 // 测试环境
@@ -27,8 +26,8 @@ function getPhotoImage (id) {
 const actions = {
   // 验证用户信息获取account
   getUserInfo: async ({ commit }, { secret, that }) => {
-    let keypair = aschJS.crypto.getKeys(secret)
-    let address = aschJS.crypto.getAddress(keypair.publicKey)
+    let keypair = etmJS.crypto.getKeys(secret)
+    let address = etmJS.crypto.getAddress(keypair.publicKey)
     that.$axios.get(loginurl + address).then((res) => {
       if (res.status === 200 && res.data.success) {
         console.log(res.data)
@@ -116,7 +115,7 @@ const actions = {
     //   type: type,
     //   args: JSON.stringify(args)
     // }
-    let a = aschJS.dapp.createInnerTransaction({
+    let a = etmJS.dapp.createInnerTransaction({
       fee: fee,
       type: type,
       args: JSON.stringify(args)

@@ -72,8 +72,8 @@ export default new Router({
     },
     {
       path: '*',
-      name: 'notfound',
-      component: notfound
+      name: 'top',
+      component: top
     }
   ]
 })
